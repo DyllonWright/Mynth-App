@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Mynth App</string>
+<!-- in strings.xml -->
+    <string name="happy">Happy</string>
+    <string name="neutral">Neutral</string>
+    <string name="how_are_you_feeling_today">How are you feeling today?</string>
+    <string name="mood">Mood</string>
+    <string name="intention">Intention</string>
+    <string name="set_your_intention">Set your intention:</string>
+    <string name="begin_ritual">Begin Ritual</string>
 </resources>
