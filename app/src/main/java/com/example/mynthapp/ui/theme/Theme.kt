@@ -1,22 +1,18 @@
 package com.example.mynthapp.ui.theme
 
-import com.example.mynthapp.ui.theme.ObsidianAccent
-import com.example.mynthapp.ui.theme.ObsidianBackground
-import com.example.mynthapp.ui.theme.ObsidianSurface
-import com.example.mynthapp.ui.theme.ObsidianText
-
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.example.mynthapp.ui.theme.AppTypography
-import com.example.mynthapp.ui.theme.Shapes
+import androidx.compose.material3.Typography // ✅ Material 3
+import androidx.compose.material3.Shapes // ✅ Material 3
 
-private val ObsidianColorPalette = darkColors(
+
+// Obsidian color values
+private val ObsidianColorScheme = darkColorScheme(
     primary = ObsidianAccent,
-    primaryVariant = ObsidianAccent,
     secondary = ObsidianAccent,
     background = ObsidianBackground,
     surface = ObsidianSurface,
@@ -25,36 +21,48 @@ private val ObsidianColorPalette = darkColors(
     onBackground = ObsidianText,
     onSurface = ObsidianText
 )
-private val DarkColorPalette = darkColors(
+
+// Optional fallback dark/light schemes (can be customized)
+private val DefaultDarkColorScheme = darkColorScheme(
     primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
-private val LightColorPalette = lightColors(
+private val DefaultLightColorScheme = lightColorScheme(
     primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-    // Add other default colors to override
+    secondary = Teal200,
+    background = Color(0xFFFFFFFF),
+    surface = Color(0xFFF2F2F2),
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black
 )
 
 @Composable
 fun MynthAppTheme(
-    useObsidianTheme: Boolean = true, // <-- change this to false if needed
+    useObsidianTheme: Boolean = true,
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = when {
-        useObsidianTheme -> ObsidianColorPalette
-        darkTheme -> DarkColorPalette
-        else -> LightColorPalette
+    val colorScheme = when {
+        useObsidianTheme -> ObsidianColorScheme
+        darkTheme -> DefaultDarkColorScheme
+        else -> DefaultLightColorScheme
     }
-
+    val AppShapes = Shapes() // you can customize corners here too
+    val AppTypography = Typography() // optionally override styles here
     MaterialTheme(
-        colors = colors,
-        typography = AppTypography,
-        shapes = Shapes,
+        colorScheme = colorScheme,
+        typography = AppTypography,  // from material3
+        shapes = AppShapes,          // from material3
         content = content
     )
-}
 
+}

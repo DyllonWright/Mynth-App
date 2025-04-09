@@ -40,11 +40,15 @@ android {
 }
 
 dependencies {
-    val composeUiVersion = "1.3.3"
+    val composeUiVersion = "1.5.4"
+    implementation("com.google.accompanist:accompanist-flowlayout:0.30.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.compose.ui:ui:$composeUiVersion")
     implementation("androidx.compose.material:material:$composeUiVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
+
     // Navigation for Compose
     implementation("androidx.navigation:navigation-compose:2.5.3")
     // Optional: for coroutine usage in composables
